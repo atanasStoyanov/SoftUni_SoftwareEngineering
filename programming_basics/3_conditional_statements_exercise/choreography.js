@@ -8,8 +8,8 @@ function choreography(input){
 
     if (stpesPerDay <= 13){
         console.log(`Yes, they will succeed in that goal! ${stepsPerDancer.toFixed(2)}%`);
-    }else{
-        console.log(`No, they will not succeed in that goal! Required ${stepsPerDancer.toFixed(2)}% steps to be learned per day`)
+    } else {
+        console.log(`No, they will not succeed in that goal! Required ${stepsPerDancer.toFixed(2)}% steps to be learned per day`);
     }
 }
 

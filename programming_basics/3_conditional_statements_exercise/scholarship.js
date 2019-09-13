@@ -15,11 +15,11 @@ function scholarship(input){
     }
 
     if ((social > excellent) && social != 0){
-        console.log(`You get a Social scholarship ${Math.floor(social)} BGN`)
-    }else if ((social <= excellent) && excellent != 0){
-        console.log(`You get a scholarship for excellent results ${Math.floor(excellent)} BGN`)
-    }else {
-        console.log(`You cannot get a scholarship!`)
+        console.log(`You get a Social scholarship ${Math.floor(social)} BGN`);
+    } else if ((social <= excellent) && excellent != 0){
+        console.log(`You get a scholarship for excellent results ${Math.floor(excellent)} BGN`);
+    } else {
+        console.log(`You cannot get a scholarship!`);
     }
 }
 scholarship(['419.00', '5.60', '420.00'])

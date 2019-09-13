@@ -1,4 +1,4 @@
-function timePlus15(input){
+function timePlus15 (input){
     let startHours = Number(input[0]);
     let startMinutes = Number(input[1]);
 
@@ -8,14 +8,15 @@ function timePlus15(input){
         startHours += 1;
         newMinutes -= 60;
     }
+
     if (startHours >=24){
         startHours -=24;
     }
 
     if (newMinutes < 10){
-        console.log(`${startHours}:0${newMinutes}`)
-    }else{
-        console.log(`${startHours}:${newMinutes}`)
+        console.log(`${startHours}:0${newMinutes}`);
+    } else{
+        console.log(`${startHours}:${newMinutes}`);
     }
 
 }

@@ -7,10 +7,10 @@ function swimmingRecord(input){
     let slowing = Math.floor(distance / 15) * 12.5
     let finalTime = time + slowing;
     
-    if(record > finalTime){
-        console.log(`Yes, he succeeded! The new world record is ${finalTime.toFixed(2)} seconds.`)
-    }else{
-        console.log(`No, he failed! He was ${(finalTime - record).toFixed(2)} seconds slower.`)
+    if (record > finalTime){
+        console.log(`Yes, he succeeded! The new world record is ${finalTime.toFixed(2)} seconds.`);
+    } else {
+        console.log(`No, he failed! He was ${(finalTime - record).toFixed(2)} seconds slower.`);
     }
 }
 

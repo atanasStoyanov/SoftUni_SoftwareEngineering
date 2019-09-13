@@ -16,15 +16,15 @@ function toys (input){
     let toys = puzzlesQuantity + dollsQuantity + bearQuantity + minionQuantity + truckQuantity;
 
     if (toys >= 50){
-        sum = sum - sum * 0.25
+        sum = sum - sum * 0.25;
     }
 
     sum = sum - sum * 0.1;
 
-    if (sum >=price){
-        console.log(`Yes! ${(sum - price).toFixed(2)} lv left.`)
+    if (sum >= price){
+        console.log(`Yes! ${(sum - price).toFixed(2)} lv left.`);
     } else{
-        console.log(`Not enough money! ${(price - sum).toFixed(2)} lv needed.`)
+        console.log(`Not enough money! ${(price - sum).toFixed(2)} lv needed.`);
     }
 }
 

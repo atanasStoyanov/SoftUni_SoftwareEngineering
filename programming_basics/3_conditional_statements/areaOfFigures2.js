@@ -5,12 +5,12 @@ function areaOfFigures(input){
     switch(figure){
         case "square":{
             let sideA = Number(input[1]);
-            area = sideA * sideA
+            area = sideA * sideA;
         } break;
         case "rectangle":{
             let sideA = Number(input[1]);
             let sideB = Number(input[2]);
-            area = sideA * sideB
+            area = sideA * sideB;
         } break;
         case "circle":{
             let r = Number(input[1]);
@@ -19,10 +19,10 @@ function areaOfFigures(input){
         case "triangle":{
             let side = Number(input[1]);
             let h = Number(input[2]);
-            area = side * h / 2
+            area = side * h / 2;
         }break;
     }
     console.log(area.toFixed(3));
     
 }
-areaOfFigures(['circle', '6'])
+areaOfFigures(['rectangle', 7, 2.5])

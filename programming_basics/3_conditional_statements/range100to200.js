@@ -1,4 +1,4 @@
-function range100to200(input){
+function range100to200 (input){
     let number = Number(input[0]);
 
     if (number < 100){
@@ -6,7 +6,7 @@ function range100to200(input){
     } else if (number <= 200){
         console.log('Between 100 and 200');
     }else {
-        console.log('Greater than 200')
+        console.log('Greater than 200');
     }
 }
 

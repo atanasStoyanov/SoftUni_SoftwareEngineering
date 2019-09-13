@@ -1,11 +1,11 @@
 function graterNumber(input){
-    let num1 = Number(input[0]);
-    let num2 = Number(input[1]);
+    let firstNum = Number(input[0]);
+    let secondNum = Number(input[1]);
 
-    if (num1 > num2){
-        console.log(num1)
+    if (firstNum > secondNum){
+        console.log(firstNum);
     } else{
-        console.log(num2);
+        console.log(secondNum);
     }
 }
 

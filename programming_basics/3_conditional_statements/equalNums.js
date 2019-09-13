@@ -4,9 +4,9 @@ function equalNums(input){
     let num3 = Number(input[2]);
 
     if (num1 == num2 && num2 == num3){
-        console.log('yes')
-    }else{
-        console.log('no')
+        console.log('yes');
+    } else {
+        console.log('no');
     }
 }
 

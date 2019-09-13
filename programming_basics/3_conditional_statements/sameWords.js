@@ -6,10 +6,9 @@ function sameWords(input){
     word2 = word2.toLowerCase();
 
     if (word1 == word2){
-        console.log('yes')
-    }else {
-        console.log('no')
+        console.log('yes');
+    } else {
+        console.log('no');
     }
 }
-
 sameWords(['nasko', 'Nasko'])

@@ -1,15 +1,14 @@
 function fruitOrVeg(input){
+    
     let product = input[0];
 
-    let isFruit = product == 'banana' || product == 'apple' || product == 'kiwi' || product == 'cherry' || product == 'lemon' || product == 'grapes';
-    let isVeg = product == 'tomato' || product == 'cucumber' || product == 'pepper' || product == 'carrot';
-
-    if (isFruit){
+    if (product == 'banana' || product == 'apple' || product == 'kiwi' || product == 'cherry' || product == 'lemon' || product == 'grapes') {
         console.log('fruit');
-    }else if (isVeg){
+    } else if (product == 'tomato' || product == 'cucumber' || product == 'pepper' || product == 'carrot') {
         console.log('vegetable');
-    }else{
-        console.log('unknown')
+    } else {
+        console.log('unknown');
     }
 }
+fruitOrVeg(['water'])
 

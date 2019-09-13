@@ -6,13 +6,13 @@ function pointInRectangle(input){
     let x = Number(input[4]);
     let y = Number(input[5]);
 
-    let isXinside = x1 <= x && x <= x2 
-    let isYinside = y1 <= y && y <=y2
+    let isXinside = x1 <= x && x <= x2 ;
+    let isYinside = y1 <= y && y <=y2;
 
     if (isXinside && isYinside) {
-        console.log('Inside')
-    }else{
-        console.log('Outside')
+        console.log('Inside');
+    } else {
+        console.log('Outside');
     }
 }
 

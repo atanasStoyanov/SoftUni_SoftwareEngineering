@@ -3,17 +3,21 @@ function personalTitle(input){
     let gender = input[1];
 
     if (gender == "f") {
+        
         if (age < 16) {
-            console.log('Miss')
-        } else{
-            console.log('Ms.')
+            console.log('Miss');
+        } else {
+            console.log('Ms.');
         }
+
     } else {
+        
         if (age < 16) {
-            console.log('Master')
-        }else{
-            console.log('Mr.')
+            console.log('Master');
+        } else {
+            console.log('Mr.');
         }
+        
     }
 }
 

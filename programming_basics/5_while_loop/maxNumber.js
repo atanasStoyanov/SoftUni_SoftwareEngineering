@@ -1,15 +1,17 @@
-function maxNumber(input){
+function maxNumber (input) {
     let n = Number(input.shift());
     let count = 0;
-    let max = -999999999999
+    let max = Number.MIN_SAFE_INTEGER;
 
-    while (count < n){
-        let num = Number(input.shift());
-        count++;
+    while (count < n) {
+        let num = Number(input.shift());        
+
         if (num > max) {
             max = num;
         }
+
+        count++;
     }
-    console.log(max)
+    console.log(max);
 }
 maxNumber(['2','100','99'])

@@ -1,30 +1,21 @@
-function graduation (input){
+function graduation(input) {
     let name = input.shift();
-    let allGrades = 12;
-    let counter = 1;
-    let sum = 0;
-    let excludet = 0;
-    let isExcludet = false;
-    
-    while (counter <= allGrades) {
-    let grade = Number(input.shift())
-        if(grade >= 4){
-            sum += grade;
-            counter++ 
-        }else{
-            excludet++
-            if(excludet > 1){
-                isExcludet = true;
-                break;
-            }
+    let classes = 12;
+    let counter = 1; 
+    let sumGrades = 0;
+
+    while (counter <= classes) {
+        let grade = Number(input.shift());
+
+        if (grade >= 4) {
+            sumGrades += grade;
+            counter++;
         }
     }
-    let avg = sum / allGrades
-    if (isExcludet == false){
-    console.log(`${name} graduated. Average grade: ${avg.toFixed(2)}`)
-    }else{
-        console.log(`${name} has been excluded at ${counter} grade`)
-    }
+
+    let avg = sumGrades / classes;
+
+    console.log(`${name} graduated. Average grade: ${avg.toFixed(2)}`);
 }
 
-graduation(['Mimi',5,6,5,6,5,6,6,2,3])
+graduation(['Pesho',4,5.5,6,5.43,4.5,6,5.55,5,6,6,5.43,5])

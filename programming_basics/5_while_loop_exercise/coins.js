@@ -1,9 +1,9 @@
-function coinsChange(input){
+function coinsChange (input) {
     let money = Number(input.shift());
     let counter = 0;
     let remainingMoney = money;
 
-    while (remainingMoney > 0){
+    while (remainingMoney > 0) {
         counter += Math.floor(remainingMoney / 2);
         remainingMoney %= 2;
         counter += Math.floor(remainingMoney / 1);
@@ -28,7 +28,8 @@ function coinsChange(input){
         remainingMoney = remainingMoney.toFixed(2);
         break;
     }
-    console.log(counter)
+
+    console.log(counter);
 }
 
 coinsChange([2.73])

@@ -1,26 +1,30 @@
 function healthySteps (input){
-    const goal = 10000
+    const goal = 10000;     
     let steps = 0; 
     let isGoalReached = false;
 
-    while(steps < goal){
-       let currentSteps = input.shift();
-        if(currentSteps == 'Going home'){
+    while (steps < goal) {
+        let currentSteps = input.shift();
+
+        if (currentSteps == 'Going home') {
             let lastSteps = Number(input.shift());
-            steps +=lastSteps
+            steps += lastSteps;
             break;
-        }else{
+        } else {
             steps += Number(currentSteps);
         }
     }
-    if(steps >= goal){
+
+    if (steps >= goal) {
         isGoalReached = true;
     }
-    let diff = Math.abs(goal - steps)
-    if(isGoalReached == true){
+
+    let diff = Math.abs(goal - steps);
+
+    if (isGoalReached) {
         console.log('Goal reached! Good job!');
-    }else{
-        console.log(`${diff} more steps to reach goal.`)
+    } else {
+        console.log(`${diff} more steps to reach goal.`);
     }
 }
 

@@ -5,32 +5,40 @@ function fishing (input) {
 
     while (catchedFishes <= quota) {
         let currentFish = input.shift();
-        if (currentFish == 'Stop'){
+
+        if (currentFish === 'Stop') {
             break;
         }
+
         let weight = Number(input.shift());
         let fishPrice = 0;
         let netFishPrice = 0;
+
         for (let letter = 0; letter < currentFish.length; letter++) {
             fishPrice += currentFish.charCodeAt(letter);
         }
+        
         netFishPrice = fishPrice / weight;
-        if (catchedFishes % 3 == 0){
+        
+        if (catchedFishes % 3 == 0) {
             profit += netFishPrice;
-        }else{
+        } else {
             profit -= netFishPrice;
         }
+
         catchedFishes++;
     }
-    if(catchedFishes > quota){
+
+    if (catchedFishes > quota) {
         console.log('Lyubo fulfilled the quota!');
     }
-    if(profit > 0){
+
+    if (profit > 0) {
         console.log(`Lyubo's profit from ${catchedFishes - 1} fishes is ${profit.toFixed(2)} leva.`);
-    }else{
+    } else {
         let lostMoney = Math.abs(profit);
         console.log(`Lyubo lost ${lostMoney.toFixed(2)} leva today.`);
     }
 }
 
-fishing([10,'Pike', 15, 'GrassCarp', 40, 'Common Rudd', 7, 'Perch', 20, 'Stop'])
+fishing([10,'Pike', 15, 'GrassCarp', 40, 'Common Rudd', 7, 'Perch', 20, 'Stop']);

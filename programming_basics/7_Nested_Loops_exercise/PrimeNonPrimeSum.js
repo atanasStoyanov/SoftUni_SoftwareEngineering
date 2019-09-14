@@ -1,34 +1,42 @@
 function primeNonPrimeSum(input) {
-    let command = input.shift()
+    let command = input.shift();
     let primeSum = 0;
     let nonPrimeSum = 0;
     
 
-    while(command != 'stop'){
+    while (command != 'stop') {
         let num = Number(command);
-        if (num < 0){
+        
+        if (num < 0) {
             console.log('Number is negative.');
             command = input.shift();
             continue;
         }
+
         let isPrime = true;
-        if (num == 1){
+        
+        if (num == 1) {
             isPrime = false;
-        }else {
+        } else {
+          
             for (let i = 2; i < num; i++) {
-                if(num % i == 0){
+          
+                if (num % i == 0) {
                     isPrime = false;
                     break;
                 }
             }
         }
+
         if (isPrime){
             primeSum += num;
-        }else{
+        } else {
             nonPrimeSum += num;
         }
+
         command = input.shift();
     }
+    
     console.log(`Sum of all prime numbers is: ${primeSum}`);
     console.log(`Sum of all non prime numbers is: ${nonPrimeSum}`);
 }

@@ -5,19 +5,22 @@ function trainTheTrainers(input) {
     let presentationsNumber = 0;
     
 
-    while (presentationName != 'Finish'){
+    while (presentationName !== 'Finish') {
         let presentationGradeSum = 0;
         let presentationScore = 0;
+
         for (let i = 0; i < gudges; i++) {
             let grade = Number(input.shift());
             presentationGradeSum += grade; 
         }
-        presentationScore = presentationGradeSum / gudges
+
+        presentationScore = presentationGradeSum / gudges;
         console.log(`${presentationName} - ${presentationScore.toFixed(2)}.`);
-        sumPresentationScores += presentationScore
+        sumPresentationScores += presentationScore;
         presentationsNumber++;
         presentationName = input.shift();
     }
+    
     let finalAssessment = sumPresentationScores / presentationsNumber;
     console.log(`Student's final assessment is ${finalAssessment.toFixed(2)}.`);
 }

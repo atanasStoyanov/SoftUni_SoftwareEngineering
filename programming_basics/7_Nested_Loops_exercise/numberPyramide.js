@@ -6,15 +6,20 @@ function numberPyramid(input) {
 
     for (let rows = 1; rows <= n; rows++) {
         let printCurrentLine ='';
-        for (let cols = 1; cols <= rows; cols++){
-            if (current > n){
+
+        for (let cols = 1; cols <= rows; cols++) {
+
+            if (current > n) {
                 isBigger = true;
                 break;
             }
+
             printCurrentLine += `${current} `;
             current++;
         }
+        
         console.log(printCurrentLine);
+
         if (isBigger) {
             break;
         }

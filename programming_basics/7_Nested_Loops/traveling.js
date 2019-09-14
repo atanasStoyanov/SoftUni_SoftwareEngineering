@@ -1,16 +1,19 @@
 function traveling(input) {
 
-    while (true){
+    while (true) {
         let destination = input.shift();
+
         if (destination == 'End') {
             break;
         }
           let budget = Number(input.shift());
           let savedMoney = 0; 
-        while (savedMoney < budget){
+
+        while (savedMoney < budget) {
             let currentMoney = Number(input.shift());
             savedMoney += currentMoney;
         }
+        
         console.log(`Going to ${destination}!`);
     }
 }

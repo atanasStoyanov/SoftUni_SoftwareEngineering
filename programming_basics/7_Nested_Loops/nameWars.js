@@ -2,22 +2,26 @@ function nameWars(input) {
     let maxSum = -1;
     let winnerName = '';
 
-    while (true){
+    while (true) { 
         let name = input.shift();
-        if (name == 'STOP'){
+        
+        if (name == 'STOP') {
             break;
-        }
+        } 
+        
         let sum = 0;
+
         for (let index = 0; index < name.length; index++) {
             let currentLetter = name[index].charCodeAt();
             sum += currentLetter;
         }
+
         if (sum > maxSum){
             maxSum = sum;
             winnerName = name;
         }
     }
-    console.log(`Winner is ${winnerName} - ${maxSum}!`)
+    console.log(`Winner is ${winnerName} - ${maxSum}!`);
 }
 
-nameWars(['Petar','Georgi','Stanimir','STOP'])
+nameWars(['Petar','Georgi','Stanimir','STOP']);

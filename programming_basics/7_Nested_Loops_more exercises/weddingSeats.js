@@ -8,20 +8,25 @@ function weddingSeats(input) {
     let lastSectorNumber = lastSectorSymbol.charCodeAt(lastSectorSymbol);
 
     for (let sector = 65; sector <= lastSectorNumber; sector++) {
+
         for (let rows = 1; rows <= rowsFirstSector; rows++) {
-            if(rows % 2 == 0){
+
+            if (rows % 2 == 0) {
                 seatsPerOddRow += 2;
-            }else{
+            } else {
                 seatsPerOddRow =seatsPerRow;
             }
+
             for (let seats = 97; seats < 97 + seatsPerOddRow; seats++) {
                 console.log(`${String.fromCharCode(sector)}${rows}${String.fromCharCode(seats)}`);
                 seatsCounter++;
             }
             
         } 
+
         rowsFirstSector++;
     }
+    
     console.log(seatsCounter);
 }
 weddingSeats(['C',4,2])

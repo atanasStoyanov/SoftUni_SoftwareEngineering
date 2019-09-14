@@ -10,15 +10,19 @@ function lettersCombination(input) {
     let numberToMiss = letterToMiss.charCodeAt(letterToMiss);
 
     for (let i = startNumber; i <= endNumber; i++) {
-        for(let j = startNumber; j <= endNumber; j++){
+
+        for(let j = startNumber; j <= endNumber; j++) {
+
             for (let k = startNumber; k <= endNumber; k++) {
-                if(i != numberToMiss && j != numberToMiss && k != numberToMiss){
+
+                if(i != numberToMiss && j != numberToMiss && k != numberToMiss) {
                     printLine += `${String.fromCharCode(i)}${String.fromCharCode(j)}${String.fromCharCode(k)} `;
                     combinationsCounter++;
                 }    
             }
         }   
     }
+    
     console.log(`${printLine}${combinationsCounter}`);
 }
 

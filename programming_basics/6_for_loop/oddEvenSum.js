@@ -6,17 +6,18 @@ function oddEvenSum(input) {
     for (let index = 1; index <= n; index++) {
         let currentNumber = Number(input.shift());
 
-        if (index % 2 == 0){
+        if (index % 2 == 0) {
             sumEven +=currentNumber;
-        }else{
+        } else {
             sumOdd +=currentNumber;
         }
     }
-    if (sumEven == sumOdd){
+
+    if (sumEven == sumOdd) {
         console.log('Yes');
         console.log(`Sum = ${sumEven}`);
-    }else{
-        let diff = Math.abs(sumEven - sumOdd)
+    } else {
+        let diff = Math.abs(sumEven - sumOdd);
         console.log('No');
         console.log(`Diff = ${diff}`);
     }

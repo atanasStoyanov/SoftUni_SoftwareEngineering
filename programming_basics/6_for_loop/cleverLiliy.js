@@ -5,27 +5,27 @@ function cleverLily (input) {
 
     let sumMoney = 0;
     let toysNumber = 0;
-    let brothersMoney =0;
+    let brothersMoney = 0;
     let evenYearsCounter = 0; 
 
-    for(let index = 1; index <= age; index++){
+    for (let index = 1; index <= age; index++) {
         if (index % 2 == 0){
-            evenYearsCounter++
+            evenYearsCounter++;
             sumMoney = sumMoney + evenYearsCounter * 10;
-            brothersMoney++
-        }else{
+            brothersMoney++;
+        } else {
             toysNumber++;
         }
     }
 
     sumMoney = sumMoney + (toysNumber * pricePerToy) - brothersMoney;
 
-    let diff = Math.abs(sumMoney - washingmachinePrice)
+    let diff = Math.abs(sumMoney - washingmachinePrice);
 
-    if(sumMoney >= washingmachinePrice){
-        console.log(`Yes! ${diff.toFixed(2)}`)
-    }else{
-        console.log(`No! ${diff.toFixed(2)}`)
+    if (sumMoney >= washingmachinePrice) {
+        console.log(`Yes! ${diff.toFixed(2)}`);
+    } else {
+        console.log(`No! ${diff.toFixed(2)}`);
     }
 }
 

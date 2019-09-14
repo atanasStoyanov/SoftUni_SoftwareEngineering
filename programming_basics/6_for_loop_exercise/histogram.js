@@ -6,19 +6,19 @@ function histogram(input) {
     let nums4 = 0;
     let nums5 = 0;
 
-    for(let index = 1; index <= n; index++){
+    for (let index = 1; index <= n; index++) {
         let currentNumber = Number(input.shift());
 
-        if (currentNumber < 200){
+        if (currentNumber < 200) {
             nums1++;
-        }else if(currentNumber < 400){
+        } else if (currentNumber < 400) {
             nums2++;
-        }else if(currentNumber < 600){
+        } else if (currentNumber < 600) {
             nums3++;
-        }else if(currentNumber < 800){
+        } else if (currentNumber < 800) {
             nums4++;
-        }else{
-            nums5++
+        } else {
+            nums5++;
         }
     }
     let p1 = nums1 / n * 100;

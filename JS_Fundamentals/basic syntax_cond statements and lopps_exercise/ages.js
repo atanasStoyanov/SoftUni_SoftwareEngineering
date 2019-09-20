@@ -1,4 +1,4 @@
-function ages(num) {
+function solve(num) {
 
     if (num >= 0 && num <= 2) {
         console.log('baby');
@@ -12,4 +12,5 @@ function ages(num) {
         console.log('elder');
     }
 }
-ages(100);
+
+solve(100);

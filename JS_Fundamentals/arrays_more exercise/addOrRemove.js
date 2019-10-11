@@ -3,11 +3,11 @@ function solve(arr) {
 
     for (let i = 0; i < arr.length; i++) {
         let command = arr[i];
-        
+
         if (command === 'add') {
             result.push(i + 1);
         } else {
-            result.splice(i - 1, 1);
+            result.pop();
         }
     }
 
@@ -18,4 +18,4 @@ function solve(arr) {
     }
 }
 
-solve(['remove', 'remove', 'remove']);
+solve(['remove', 'add', 'remove']);

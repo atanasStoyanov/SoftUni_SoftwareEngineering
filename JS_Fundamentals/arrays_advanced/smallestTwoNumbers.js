@@ -7,4 +7,4 @@ function solve(arr) {
     console.log(output);
 }
 
-solve([30, 15, 50, 5])
+solve([30, 15, 50, 5]);

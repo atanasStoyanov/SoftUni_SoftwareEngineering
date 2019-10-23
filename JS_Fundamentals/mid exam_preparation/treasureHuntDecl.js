@@ -3,37 +3,36 @@ function solve(arr) {
         .shift()
         .split('|');
 
-    function loot(itemsArr, chest) {
-        itemsArr = itemsArr.filter(a => !chest.includes(a)).map(a => chest.unshift(a));
-        return treasureChest;
+    let actions = {
+        'Loot': function (itemsArr, chest) {
+            itemsArr = itemsArr.filter(a => !chest.includes(a)).map(a => chest.unshift(a));
+            return chest;
+        },
+        'Drop': (index, chest) => { Number(index) <= chest.length ? 
+            chest.push(chest.splice(Number(index), 1).join('')) : 
+            chest = chest;
+        },
+        'Steal' : (count, chest) => { Number(count) < chest.length ? 
+            console.log(chest.splice(chest.length - count, count).join(', ')) : 
+            console.log(chest.splice(0).join(', '));
+            },
+        'printAvgGain' : (arrSum, arr) => {arrSum > 0 ? 
+            console.log(`Average treasure gain: ${(arrSum / arr.length).toFixed(2)} pirate credits.`) : 
+            console.log('Failed treasure hunt.');
+        }
     }
 
-    let drop = (index, chest) => Number(index) <= chest.length ? chest.push(chest.splice(Number(index), 1).join('')) : chest = chest;
-
-    let steal = (count, chest) => Number(count) < chest.length ? console.log(chest.splice(chest.length - count, count).join(', ')) : console.log(chest.splice(0).join(', '))
-
-    let printAvgGain = (arrSum, arr) => arrSum > 0 ? console.log(`Average treasure gain: ${(arrSum / arr.length).toFixed(2)} pirate credits.`) : console.log('Failed treasure hunt.');
-
-
     for (let i = 0; i < arr.length - 1; i++) {
-        let command = arr[i].split(' ');
-        let action = command.shift();
+        let [action, ...items] = arr[i].split(' ');
 
-        if (action === 'Loot') {
-            loot(command, treasureChest);
-        } else if (action === 'Drop') {
-            drop(command[0], treasureChest);
-        } else {
-            steal(command[0], treasureChest);
-        }
-
+        actions[action](items, treasureChest);
     }
 
     let credits = treasureChest
         .join('')
         .length;
 
-    printAvgGain(credits, treasureChest);
+    actions.printAvgGain(credits, treasureChest);
 }
 
 solve([

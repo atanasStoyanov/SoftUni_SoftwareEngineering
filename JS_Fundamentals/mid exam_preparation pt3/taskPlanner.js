@@ -25,17 +25,15 @@ function solve(arr) {
             }
             return tasksArr;
         },
-        'Count' : {
-            'Completed' : (tasksArr) => {
+        'Count' : (command, tasksArr) => {
+            if (command === 'Completed') {
                 tasksArr = tasksArr.filter(a => a === 0);
                 console.log(tasksArr.length);
-            },
-            'Incompleted' : (tasksArr) => {
+            } else if (command === 'Incompleted') {
                 tasksArr = tasksArr.filter(a => a > 0);
                 console.log(tasksArr.length);
-            },
-            'Dropped' : (tasksArr) => {
-                tasksArr = tasksArr.filter(a => a === -1);
+            } else {
+                tasksArr = tasksArr.filter(a => a <= -1);
                 console.log(tasksArr.length);
             }
         }
@@ -46,7 +44,8 @@ function solve(arr) {
         let [action, ...params] = a.split(' ');
         
         if (action === 'Count') {
-            actions[action][params[0]](taskPlanner);
+            let command = params[0];
+            actions[action](command, taskPlanner);
         } else {
             actions[action](params, taskPlanner);
         }

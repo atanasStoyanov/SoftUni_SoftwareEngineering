@@ -7,30 +7,32 @@ function someth(arr) {
     let hotelPersonPerDay = +arr.shift();
     let allFood = groupPpl * foodExpencesPerPerson * days;
     let allHotel = groupPpl * hotelPersonPerDay * days;
+
     if (groupPpl > 10) {
         allHotel *= 0.75;
     }
     let all = allFood + allHotel;
+    
     for (let i = 1; i <= days; i++) {
-        let kmTravelled = +arr[i-1];
+        let kmTravelled = +arr[i - 1];
         let fuel = kmTravelled * priceFuelKm;
         all += fuel;
         if (i % 3 === 0 || i % 5 === 0) {
             all += all * 0.4;
         }
-        
+
         if (i % 7 === 0) {
             all -= all / groupPpl;
         }
 
-        if(all > budget) {
+        if (all > budget) {
             console.log(`Not enough money to continue the trip. You need ${(all - budget).toFixed(2)}$ more.`);
             break;
         }
     }
+
     if (all <= budget) {
         console.log(`You have reached the destination. You have ${(budget - all).toFixed(2)}$ budget left.`);
-       
     }
 }
 

@@ -8,7 +8,7 @@ function solve(arr) {
         }, {})
 
     let carsIn = Object.keys(parkingLot)
-        .filter(a => parkingLot[a] === 'IN');
+        .filter(carNum => parkingLot[carNum] === 'IN');
 
     if (carsIn.length > 0) {
         carsIn

@@ -1,37 +1,38 @@
 function solve(arr) {
     let listOfUser = [];
-    let listOfArticles = {};
 
-    arr.map(token => {
+    let articlesList = arr.reduce((list, token) => {
 
         if (token.includes('user')) {
             let userName = token.split('user ').join('');
             listOfUser.push(userName);
         } else if (token.includes('article')) {
             let articleName = token.split('article ').join('');
-            listOfArticles[articleName] = {};
+            list[articleName] = {};
+
         } else {
             let splitedToken = token.split(': ');
             let commentInfo = splitedToken.pop();
             let [title, comment] = commentInfo.split(', ');
             let [user, article] = splitedToken.shift().split(' posts on ');
 
-            if (listOfUser.includes(user) && listOfArticles.hasOwnProperty(article)) {
-                listOfArticles[article][user] = `${title} - ${comment}`;
+            if (listOfUser.includes(user) && list.hasOwnProperty(article)) {
+                list[article][user] = `${title} - ${comment}`;
             }
         }
-    });
 
-    Object.keys(listOfArticles)
-        .sort((a, b) => Object.keys(listOfArticles[b]).length - Object.keys(listOfArticles[a]).length)
+        return list;
+    }, {});
+
+    Object.keys(articlesList)
+        .sort((a, b) => Object.keys(articlesList[b]).length - Object.keys(articlesList[a]).length)
         .map(art => {
             console.log(`Comments on ${art}`);
 
-            Object.keys(listOfArticles[art])
+            Object.keys(articlesList[art])
                 .sort()
-                .map(us => console.log(`--- From user ${us}: ${listOfArticles[art][us]}`));
+                .map(us => console.log(`--- From user ${us}: ${articlesList[art][us]}`));
         });
-
 
 }
 

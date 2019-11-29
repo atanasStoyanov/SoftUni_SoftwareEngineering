@@ -1,50 +1,53 @@
 function solve(arr) {
     let followers = {};
 
+    function addNewUSer(username, obj) {
+        if (!obj.hasOwnProperty(username)) {
+            obj[username] = {
+                'likes': 0,
+                'comments': 0
+            }
+        }
+
+        return obj;
+    }
+
+    function like(username, likes, obj) {
+        addNewUSer(username, obj);
+        obj[username].likes += Number(likes);
+        return obj;
+    }
+
+    function comment(username, obj) {
+        addNewUSer(username, obj);
+        obj[username].comments++;
+        return obj;
+    }
+
+    function block(username, obj) {
+        if (obj.hasOwnProperty(username)) {
+            delete obj[username];
+        } else {
+            console.log(`${username} doesn't exist.`);
+        }
+
+        return obj;
+    }
+
     for (const command of arr) {
         let commandSplit = command.split(': ');
         let action = commandSplit[0];
         let username = commandSplit[1];
 
         if (action === 'New follower') {
-
-            if (!followers.hasOwnProperty(username)) {
-                followers[username] = {
-                    'likes': 0,
-                    'comments': 0
-                };
-            }
-
+            addNewUSer(username, followers);
         } else if (action === 'Like') {
             let count = Number(commandSplit[2]);
-
-            if (followers.hasOwnProperty(username)) {
-                followers[username].likes += count;
-            } else {
-                followers[username] = {
-                    'likes': count,
-                    'comments': 0
-                }
-            }
-
+            like(username, count, followers);
         } else if (action === 'Comment') {
-
-            if (followers.hasOwnProperty(username)) {
-                followers[username].comments++;
-            } else {
-                followers[username] = {
-                    'likes': 0,
-                    'comments': 1
-                }
-            }
-
+            comment(username, followers);
         } else if (action === 'Blocked') {
-
-            if (followers.hasOwnProperty(username)) {
-                delete followers[username];
-            } else {
-                console.log(`${username} doesn't exist.`);
-            }
+            block(username, followers)
         }
 
     }
@@ -53,8 +56,9 @@ function solve(arr) {
 
     Object.keys(followers)
         .sort((a, b) => a.localeCompare(b))
-        .sort((a, b) => (followers[b].likes + followers[b].comments) - (followers[a].likes + followers[a].comments))
+        .sort((a, b) => followers[b].likes - followers[a].likes)
         .map(follower => console.log(`${follower}: ${followers[follower].likes + followers[follower].comments}`));
+
 }
 
 solve([

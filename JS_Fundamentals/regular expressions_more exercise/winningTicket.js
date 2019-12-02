@@ -14,18 +14,22 @@ function solve(arr) {
             let rightHalfMatch = rightHalf.match(winningPattern);
 
             if (leftHalfMatch && rightHalfMatch) {
-
-                if (leftHalfMatch[0].length > 9 && rightHalfMatch[0].length > 9) {
+                
+                if (leftHalfMatch[0] === rightHalfMatch[0] && leftHalfMatch[0].length > 9) {
                     console.log(`ticket "${ticket}" - ${leftHalfMatch[0].length}${leftHalfMatch[0][0]} Jackpot!`);
-                } else {
+                } else if (leftHalfMatch[0] === rightHalfMatch[0]) {
                     console.log(`ticket "${ticket}" - ${leftHalfMatch[0].length}${leftHalfMatch[0][0]}`);
+                } else {
+                    console.log(`ticket "${ticket}" - no match`);
                 }
 
             } else {
                 console.log(`ticket "${ticket}" - no match`);
+                
             }
+
         }
-    }    
+    }
 }
 
 solve([

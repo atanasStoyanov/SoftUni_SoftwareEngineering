@@ -1,29 +1,31 @@
 function solve(arr) {
-    let text = arr[0];
-    let pattern = /[^0-9]+[0-9]+/g;
+    let text = arr.join('');
+    let stringPattern = /[^0-9]+/g;
+    let numPattern = /[0-9]+/g;
 
-    let rageMsg = text.match(pattern)
-        .reduce((agr, msg) => {
-            let stringPattern = /[^0-9]+/g;
-            let numPattern = /[0-9]+/g;
+    let symbolsArr = text.match(stringPattern);
+    let numsArr = text.match(numPattern);
+    let rage = '';
+    let uniqueSymbols = '';
 
-            let str = msg.match(stringPattern).join('').toUpperCase();
-            let num = msg.match(numPattern).join('');
+    for (let i = 0; i < symbolsArr.length; i++) {
+        let num = Number(numsArr[i]);
+        let str = symbolsArr[i].toUpperCase();
 
-            agr.push(str.repeat(num));
+        str
+            .split('')
+            .forEach(char => {
+                if (!uniqueSymbols.includes(char) && num !== 0) {
+                    uniqueSymbols += char;
+                }
+            });
 
-            return agr;
-        }, []);
-
-    let uniqueSymbols = rageMsg
-        .join('')
-        .split('')
-        .filter((a, i, self) => self.indexOf(a) === i);
-
+        rage += str.repeat(num)
+    }
+    
     console.log(`Unique symbols used: ${uniqueSymbols.length}`);
 
-    console.log(rageMsg.join(''));
-
+    console.log(rage);
 }
 
-solve(['aSd2&5s@10']);
+solve(['aSd2&5s@1']);

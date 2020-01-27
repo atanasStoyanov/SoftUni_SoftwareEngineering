@@ -1,5 +1,5 @@
 // This will not work in Judge as I changed the HTML. 
-// To work in judge remove eventListner and add "onclick" to the button in the HTML.
+// To work in judge remove eventListner and add onclick = "createArticle()" to the button in the HTML.
 
 function createArticle() {
 	let titleInput = document.getElementById('createTitle');

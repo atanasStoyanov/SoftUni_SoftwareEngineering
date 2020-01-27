@@ -1,5 +1,5 @@
 // This will not work in Judge as I changed the HTML. 
-// To work in judge remove eventListner and add "onclick" to the button in the HTML.
+// To work in judge remove eventListner and add onclick = "solve()" to the button in the HTML.
 
 function solve() {
   let input = document.getElementById('input');

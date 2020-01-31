@@ -12,15 +12,17 @@ list.addEventListener('click', deleteItem);
 function addItem(e) {
     e.preventDefault();
 
-    let newItem = document.createElement('li');
-    newItem.innerHTML = input.value;
+    if (input.value !== '') {
+        let newItem = document.createElement('li');
+        newItem.innerHTML = input.value;
 
-    let deleteLink = createLink('[Delete]', '#');
-    newItem.appendChild(deleteLink);
+        let deleteLink = createLink('[Delete]', '#');
+        newItem.appendChild(deleteLink);
 
-    list.appendChild(newItem);
+        list.appendChild(newItem);
 
-    input.value = '';
+        input.value = '';
+    }
 
 }
 

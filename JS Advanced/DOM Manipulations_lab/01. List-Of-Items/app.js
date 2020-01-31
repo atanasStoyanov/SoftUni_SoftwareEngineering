@@ -1,3 +1,5 @@
+//To work in judge remove event listener and invoke addItem function with "onclick" attribute of the button in the HTML file.
+
 let list = document.getElementById('items');
 let input = document.getElementById('newItemText');
 let button = document.querySelector('input[type=button]');

@@ -1,3 +1,4 @@
+// To work in judge add onload="focus()" to the body tag in the HTML and remove window.addEventListener
 function focus() {
     let allInputFields = document.querySelectorAll('input[type=text]');
 
@@ -17,3 +18,5 @@ function focus() {
             parentDiv.classList.remove('focused');
         }
 }
+
+window.addEventListener('DOMContentLoaded', focus);

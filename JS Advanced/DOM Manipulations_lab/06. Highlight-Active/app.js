@@ -9,11 +9,13 @@ function focus() {
         });
 
         function addFocus(e) {
+            e.preventDefault();
             let parentDiv = e.target.parentNode;
             parentDiv.classList.add('focused');
         }
 
         function removeFocus(e) {
+            e.preventDefault();
             let parentDiv = e.target.parentNode;
             parentDiv.classList.remove('focused');
         }

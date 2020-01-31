@@ -12,7 +12,7 @@ function deleteByEmail() {
 
         if (cell.innerHTML === input.value) {
             deleteRow(cell);
-            isFound = true
+            isFound = true;
         }
 
     }

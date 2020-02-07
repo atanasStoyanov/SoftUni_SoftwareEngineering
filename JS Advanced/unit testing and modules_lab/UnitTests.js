@@ -1,20 +1,34 @@
-let sum = require('./index');
+let sum = require('./sumOfNumbers');
 let assert = require('chai').assert;
-let expect = require('chai').expect;
 
 describe('sum() behavior', () => {
 
-    it('check the return result', () => {
-        let result = sum(5, 37);
+    it('check result with valid data', () => {
+        let actualResult = sum([5, 5]);
+        let expectedResult = 10;
 
-        assert.equal(result, 42, 'The result should be 42');
+        assert.equal(actualResult, expectedResult, 'The result should be 10');
     });
 
-    it('check the result type', () => {
-        let result = sum(5, '10') ;
+    it('check result with one element', () => {
+        let actualResult = sum([1]);
+        let expectedResult = 1;
 
-        assert.isNumber(result, 'The result is not a number');
+        assert.equal(actualResult, expectedResult, 'The result should be 1');
     });
 
+    it('check result with empty array', () => {
+        let actualResult = sum([]);
+        let expectedResult = 0;
+
+        assert.equal(actualResult, expectedResult, 'The result should be 0');
+    })
+
+    it ('check result with floating point and negative numbers', () => {
+        let actualResult = sum([1.5, 1.5, -1]);
+        let expectedResult = 2;
+
+        assert.equal(actualResult, expectedResult, 'The result should be 2');
+    })
 
 })

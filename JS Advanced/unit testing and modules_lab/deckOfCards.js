@@ -79,4 +79,4 @@ function printDeckOfCards(cardsArr) {
     // console.log(result.join(' '));
 }
 
-console.log(printDeckOfCards(['AS', '10D', 'KH', '2C']));
+console.log(printDeckOfCards(['AS', '10D', 'KH', '1C']));

@@ -15,7 +15,7 @@
                 "--timeout",
                 "999999",
                 "--colors",
-                "${workspaceFolder}/paymentPackage/unitTests"
+                "${workspaceFolder}/warehouse/warehouse-test.js"
             ],
             "internalConsoleOptions": "openOnSessionStart",
             "skipFiles": [

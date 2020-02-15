@@ -8,6 +8,7 @@ function solution() {
 
     addGiftBtn.addEventListener('click', addGift);
 
+
     function addGift(e) {
         let giftName = input.value;
 
@@ -21,17 +22,35 @@ function solution() {
 
         sortGifts(giftsList);
 
+        // let allSendButtons = document.querySelectorAll('#sendButton');
+        // let allDiscardButtons = document.querySelectorAll('#discardButton');
+
+        // allSendButtons.forEach(b => b.addEventListener('click', sendGift));
+        // allDiscardButtons.forEach(b => b.addEventListener('click', discardGift));
+
+
         input.value = '';
     }
 
     function sortGifts(list) {
         let allElements = list.getElementsByTagName('li');
+        // let vals = [];
+
+        // for (let i = 0; i < allElements.length; i++) {
+        //     vals.push(allElements[i].innerHTML);
+        // }
+
+        // vals.sort();
+
+        // for (let i = 0; i < allElements.length; i++) {
+        //     allElements[i].innerHTML = vals[i];
+        // }
 
         for (let i = 0; i < allElements.length - 1; i++) {
             let firstElement = allElements[i];
             let nextElement = allElements[i + 1];
 
-            if (firstElement.textContent.toLowerCase() > nextElement.textContent.toLowerCase()) {
+            if (firstElement.textContent.toLowerCase().localeCompare(nextElement.textContent.toLowerCase()) === 1) {
                 list.insertBefore(nextElement, firstElement);
             }
         }
@@ -46,7 +65,10 @@ function solution() {
     }
 
     function sendGift(e) {
+
         let parent = e.target.parentNode;
+        console.log(parent);
+
         let buttons = parent.querySelectorAll('button');
         parent.removeChild(buttons[0]);
         parent.removeChild(buttons[1]);
@@ -74,6 +96,5 @@ function solution() {
 
         return element;
     }
-
 
 }

@@ -22,15 +22,21 @@ function solution() {
 
         sortGifts(giftsList);
 
-        // let allSendButtons = document.querySelectorAll('#sendButton');
-        // let allDiscardButtons = document.querySelectorAll('#discardButton');
-
-        // allSendButtons.forEach(b => b.addEventListener('click', sendGift));
-        // allDiscardButtons.forEach(b => b.addEventListener('click', discardGift));
-
+        // addListenersToButtons();
 
         input.value = '';
     }
+
+    // function addListenersToButtons() {
+        
+    //     let allSendButtons = document.querySelectorAll('#sendButton');
+    //     let allDiscardButtons = document.querySelectorAll('#discardButton');
+
+    //     allSendButtons.forEach(b => b.addEventListener('click', sendGift));
+    //     allDiscardButtons.forEach(b => b.addEventListener('click', discardGift));
+    // }
+
+    
 
     function sortGifts(list) {
         let allElements = list.getElementsByTagName('li');

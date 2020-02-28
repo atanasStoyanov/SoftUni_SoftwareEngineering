@@ -7,8 +7,8 @@ function solve(arr) {
         },
         compareTo: function (otherRect) {
             return this.area() - otherRect.area() === 0 ?
-                this.width - otherRect.width :
-                this.area() - otherRect.area();
+                otherRect.width - this.width :
+                otherRect.area() - this.area();
         }
     }
 
@@ -17,7 +17,7 @@ function solve(arr) {
             Object.create(template), { width, height }
         )
     )
-        .sort((a, b) => b.compareTo(a));
+        .sort((a, b) => a.compareTo(b));
 }
 
 

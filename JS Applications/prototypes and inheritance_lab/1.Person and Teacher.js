@@ -1,4 +1,4 @@
-function sole() {
+function solve() {
 
     class Person {
         constructor(n, m){

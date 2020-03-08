@@ -1,4 +1,4 @@
-function result() {
+function solve() {
     class Base {
         constructor(manufacturer) {
             this.manufacturer = manufacturer;
@@ -103,8 +103,9 @@ function result() {
     }
 }
 
+module.exports = solve;
 
-let classes = result();
+let classes = solve();
 let Computer = classes.Computer;
 let Laptop = classes.Laptop;
 let Desktop = classes.Desktop;
@@ -119,4 +120,3 @@ let laptop = new Laptop("Hewlett Packard",2.4,4,0.5,3.12,"Silver",battery);
 let desktop = new Desktop("JAR Computers",3.3,8,1,keyboard,monitor);
 
 desktop.keyboard.manufacturer = 'gosho';
-console.log(desktop)

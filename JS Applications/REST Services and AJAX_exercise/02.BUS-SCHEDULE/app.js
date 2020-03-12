@@ -14,9 +14,9 @@ function solve() {
                 if (data.status !== 200) {
                     throw new Error('Error');
                 }
-
-                return data.json();
+                return data;
             })
+            .then(data => data.json())
             .then(data => {
                 infoBox.textContent = `Next stop ${data.name}`;
 

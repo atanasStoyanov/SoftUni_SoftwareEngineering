@@ -25,7 +25,8 @@ function attachEvents() {
         fetch('https://softuni-cd6a9.firebaseio.com/phonebook.json', headers)
             .then(data => {
                 loadPhoneBook()
-            });
+            })
+            .catch(errorHandler);
     }
 
     function loadPhoneBook() {
@@ -39,23 +40,27 @@ function attachEvents() {
                         let person = `${personInfoObj.person}: ${personInfoObj.phone}`;
                         let li = createHTMLElement('li', null, person);
                         let deleteBtn = createHTMLElement('button', null, 'Delete', [{ k: 'id', v: id }], { name: 'click', func: deletePerson });
-                       
+
                         li.appendChild(deleteBtn);
                         phoneBookRef.appendChild(li);
                     });
             })
+            .catch(errorHandler);
     }
 
     function deletePerson() {
         const id = this.getAttribute('id');
 
-        fetch(`https://softuni-cd6a9.firebaseio.com/phonebook/${id}.json`, {
-            method: 'DELETE'
-        })
+        fetch(`https://softuni-cd6a9.firebaseio.com/phonebook/${id}.json`, { method: 'DELETE' })
             .then(() => {
                 loadPhoneBook();
             })
+            .catch(errorHandler);
     }
+
+    const errorHandler = (e) => {
+        console.dir(e);
+    };
 
     function createHTMLElement(tagName, className, textContent, atributes, event) {
         let element = document.createElement(tagName);
@@ -77,11 +82,6 @@ function attachEvents() {
         }
 
         return element;
-    }
-
-    function appendChildrenToParent(childrenArr, parent) {
-        childrenArr.forEach(c => parent.appendChild(c));
-        return parent;
     }
 
 }

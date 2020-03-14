@@ -18,5 +18,8 @@ function getInfo() {
                     busesList.appendChild(li);
                 });
         })
-        .catch(() => stopNameRef.textContent = 'Error');
+        .catch(errorHandler);
+
+    const errorHandler = () => stopNameRef.textContent = 'Error';
+
 }

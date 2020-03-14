@@ -16,18 +16,14 @@ function solve() {
                 }
                 return data;
             })
-            .then(data => data.json())
+            .then(jsonParse)
             .then(data => {
                 infoBox.textContent = `Next stop ${data.name}`;
 
                 currentStopName = data.name;
                 currentStopId = data.next;
             })
-            .catch(() => {
-                infoBox.textContent = 'Error';
-                departBtn.disabled = true;
-                arriveBtn.disabled = true;
-            })
+            .catch(errorHandler)
 
         departBtn.disabled = true;
         arriveBtn.disabled = false;
@@ -39,6 +35,14 @@ function solve() {
         departBtn.disabled = false;
         arriveBtn.disabled = true;
     }
+
+    const jsonParse = (res) => res.json();
+    
+    const errorHandler = () => {
+        infoBox.textContent = 'Error';
+        departBtn.disabled = true;
+        arriveBtn.disabled = true;
+    };
 
     return {
         depart,

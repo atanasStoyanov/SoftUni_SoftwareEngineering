@@ -8,11 +8,11 @@ function attachEvents() {
         commentsList: document.querySelector('#post-comments'),
     }
 
-    const jsonParse = (res) => res.json();
-    const errorHandler = (err) => console.log(err);
-
-    const baseURL = 'https://blog-apps-c12bf.firebaseio.com/posts';
-    const postsURL = `${baseURL}.json`;
+    let baseId = '';
+    let postId = '';
+    
+    const baseURL = 'https://blog-apps-c12bf.firebaseio.com/';
+    const postsURL = `${baseURL}posts.json`;
 
     elements.loadPostsBtn.addEventListener('click', loadPosts);
     elements.viewBtn.addEventListener('click', viewPost);
@@ -21,53 +21,74 @@ function attachEvents() {
         e.preventDefault();
 
         fetch(postsURL)
-            .then(res => {
-                if (!res.ok) {
-                    throw new Error(res.statusText)
-                }
-
-                return res;
-            })
+            .then(statusCheck)
             .then(jsonParse)
-            .then(data => {
-
-                Object.entries(data)
-                    .forEach(([key, postObj]) => {
-                        const option = createHTMLElement('option', null, postObj.title, [{k: 'value', v: key}, {k: 'id', v: postObj.id}]);
-                        elements.selectDropDown.appendChild(option);
-                    });
-            })
+            .then(createOptionsInDropdownMenu)
             .catch(errorHandler)
     }
 
     function viewPost(e) {
         e.preventDefault();
 
-        let postId = elements.selectDropDown.value;
-        const currentPostURL = `${baseURL}/${postId}`;
-        
-        fetch(currentPostURL)
-            .then(res => {
-                if (!res.ok) {
-                    throw new Error(res.statusText)
-                }
+        postId = elements.selectDropDown.value
 
-                return res;
-            })
-            .then(jsonParse)
-            .then(data => {
-                //TO DO ...
+        const currentPostURL = `${baseURL}/posts/${baseId}/${postId}.json`;
+        const currentCommentsURL = `${baseURL}comments.json`;
+
+        Promise.all([
+            fetch(currentPostURL).then(statusCheck).then(jsonParse),
+            fetch(currentCommentsURL).then(statusCheck).then(jsonParse)
+        ])
+            .then(([postData, commentsData]) => {
+                showPostInfo(postData);
+                showComments(commentsData);
             })
             .catch(errorHandler);
+
+    }
+    
+    function createOptionsInDropdownMenu(data) {
+        baseId = Object.keys(data)[0];
+
+        const postsObj = Object.values(data);
+
+        elements.selectDropDown.innerHTML = '';
+        
+        Object.entries(postsObj[0])
+            .forEach(([key, postInfo]) => {
+                const option = createHTMLElement('option', postInfo.title, [{ k: 'value', v: key }]);
+                elements.selectDropDown.appendChild(option);
+            });
     }
 
+    function showPostInfo(data) {
+        elements.postTitle.textContent = data.title;
+        elements.postBody.textContent = data.body;
+    }
 
-    function createHTMLElement(tagName, className, textContent, atributes, event) {
-        let element = document.createElement(tagName);
+    function showComments(data) {
+        elements.commentsList.innerHTML = '';
 
-        if (className) {
-            element.classList.add(className);
+        Object.values(data)
+            .filter(x => x.postId === postId)
+            .forEach(comment => {
+                const li = createHTMLElement('li', comment.text, [{ k: 'id', v: comment.id }]);
+                elements.commentsList.appendChild(li);
+            });
+    }
+
+    const jsonParse = (res) => res.json();
+
+    const errorHandler = (err) => console.log(err);
+
+    const statusCheck = res => {
+        if (!res.ok) {
+            throw new Error(res.statusText);
         }
+        return res;
+    };
+    function createHTMLElement(tagName, textContent, atributes, event) {
+        let element = document.createElement(tagName);
 
         if (textContent) {
             element.textContent = textContent;

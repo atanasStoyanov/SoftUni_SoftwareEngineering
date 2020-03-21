@@ -5,6 +5,8 @@ function getInfo() {
 
     busesList.innerHTML = '';
 
+    const errorHandler = () => stopNameRef.textContent = 'Error';
+
     fetch(`https://judgetests.firebaseio.com/businfo/${stopIdRef.value}.json`)
         .then(x => x.json())
         .then(data => {
@@ -20,6 +22,5 @@ function getInfo() {
         })
         .catch(errorHandler);
 
-    const errorHandler = () => stopNameRef.textContent = 'Error';
 
 }

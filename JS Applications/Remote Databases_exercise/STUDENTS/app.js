@@ -1,3 +1,5 @@
+//use live server to run the project
+
 import { extractFormData, clearForm } from './form-helpers.js';
 import { getAllStudents, createStudent, errorHandler } from "./firebase-requsts.js";
 import { loadStudentsTable } from './table-helpers.js';

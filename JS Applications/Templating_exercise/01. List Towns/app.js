@@ -14,7 +14,11 @@
         e.preventDefault();
 
         const citiesInput = elements.inputField.value;
+
+        checkFormField(citiesInput, elements.inputField);
+
         const citiesArr = citiesInput.split(', ');
+
 
         fetch('./template.hbs')
             .then(res => res.text())
@@ -30,6 +34,17 @@
             .catch(errorHandler);
     };
 
+    function checkFormField(input, formField) {
+        if (input === '') {
+            formField.style.border = 'solid 1px';
+            formField.style.borderColor = 'red';
+            formField.setAttribute('placeholder', 'Enter cities here...');
+            throw new Error('No entered cities');
+        } else {
+            formField.setAttribute('placeholder', '');
+            formField.style.border = '';
+        }
+    }
     function resetForm(form) {
         form.reset();
     };

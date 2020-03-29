@@ -1,0 +1,62 @@
+{{> header}}
+<!-- Dashboard (All Causes View) -->
+
+<div id="treks-list">
+{{#each treks}}
+    <a href="#/cause/details/{{id}}" class="card overflow-hidden treksPlaceholder trek-details" style="width: 20rem; height: 30rem;">
+        <div class="card-body">
+            <p class="card-text">{{location}}</p>
+        </div>
+        <img class="card-image"
+            src="{{imageURL}}"
+            alt="Card image cap">
+    </a>
+{{else}}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div id="fouronefour">
+                <img class="no-found-picture" src="./images/empty.jpg" />
+            </div>
+            <div class="no-found-template">
+                <h1>
+                    There aren't any treks, yet!</h1>
+                <h2>
+                    What do you have in mind?</h2>
+                <div class="no-found-details">
+                    Be the first explorer!
+                </div>
+                <div class="actions">
+                    <a href="#/cause/create" class="btn btn-dark btn-lg">Create the first trek? </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{{/each}}
+</div>
+
+{{!-- <div style="margin-top:3%; padding-top: 3%;" class="container">
+    
+    {{#each causes}}
+    <div style="margin-bottom:25%;" class="row">
+        <div class="col-lg-12">
+            <div class="card mt-4">
+                <img style="max-width: 1200px; height: auto; border-radius:25px;" class="card-img-top img-fluid"
+                    src="{{pictureUrl}}" alt="">
+                <div class="card-body">
+                    <h3 class="card-title">{{cause}}</h3>
+                    <p class="card-text">{{description}}</p>
+                    <a href="#/cause/details/{{id}}" class="btn btn-success">Become a donor $$$</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{else}}
+    <h1 class="text-center">NO CAUSES :(</h1>
+    {{/each}}
+    
+</div> --}}
+<!-- ./Dashboard (All Causes View) -->
+{{> footer}}

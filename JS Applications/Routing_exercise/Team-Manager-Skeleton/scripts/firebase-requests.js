@@ -1,81 +1,71 @@
-/**
- * Factory that returns object with function invoking CRUD operation over firebase database
- * @param {string} apiKey firebase database url
- * @param {string} collectionName entity name
- */
-export const fireBaseRequestFactory = (apiKey, collectionName, token) => {
-    if (!apiKey.endsWith('/')) {
-        throw new Error('The api key must end with "/"');
+const collectionName = 'teams';
+const collectionURL = `https://remotedbexercise.firebaseio.com/${collectionName}`;
+
+function getAllRecords(token) {
+    return fetch(`${collectionURL}/.json${token ? `?auth=${token}` : ''}`)
+        .then(CheckStatus)
+        .then(r => r.json())
+        .catch(handleError);
+}
+
+function getRecordById(token, id) {
+    return fetch(`${collectionURL}/${id}.json${token ? `?auth=${token}` : ''}`)
+        .then(CheckStatus)
+        .then(r => r.json())
+        .catch(handleError);
+}
+
+function createRecord(token, data) {
+    return fetch(`${collectionURL}/.json${token ? `?auth=${token}` : ''}`, {
+        method: 'POST',
+        body: JSON.stringify(data)
+    })
+        .then(CheckStatus)
+        .catch(handleError);
+}
+
+function updateRecord(token, id, data) {
+    return fetch(`${collectionURL}/${id}.json` + (token ? `?auth=${token}` : ''), {
+        method: 'PUT',
+        body: JSON.stringify(data)
+    })
+        .then(CheckStatus)
+        .catch(handleError);
+}
+
+function partialUpdateRecord(token, id, data) {
+    return fetch(`${collectionURL}/${id}.json` + (token ? `?auth=${token}` : ''), {
+        method: 'PATCH',
+        body: JSON.stringify(data)
+    })
+        .then(CheckStatus)
+        .catch(handleError);
+}
+
+function deleteRecord(token, id) {
+    return fetch(`${collectionURL}/${id}.json` + (token ? `?auth=${token}` : ''), {
+        method: 'DELETE'
+    })
+        .then(CheckStatus)
+        .catch(handleError);
+}
+
+function CheckStatus(res) {
+    if (!res.ok) {
+        throw new Error(`StatusCode: ${res.status}\nMessage: ${res.statusText}`);
     }
+    return res;
+}
 
-    let collectionUrl = apiKey + collectionName;
+function handleError(err) {
+    console.log(err.message);
+}
 
-    /**
-     * Returns all elements from firebase database collection
-     */
-    const getAll = () => {
-        return fetch(collectionUrl + '.json' + (token ? `auth?=${token}` : '')).then(x => x.json());
-    };
-
-    /**
-     * Based on id returns one element from firebase database collection
-     * @param {string} id 
-     */
-    const getById = (id) => {
-        return fetch(`${collectionUrl}/${id}.json` + (token ? `?auth=${token}` : '')).then(x => x.json());
-    };
-
-    /**
-     * Receive any javascript and creates entity in pre configured collection 
-     * @param {{[key:string]: any}} entityBody javascript object
-     */
-    const createEntity = (entityBody) => {
-        return fetch(collectionUrl + '.json' + (token ? `?auth=${token}` : ''), {
-            method: 'POST',
-            body: JSON.stringify(entityBody)
-        }).then(x => x.json());
-    };
-
-    /**
-     * Receive any javascript and overrides entity in pre configured collection based on the provided Id
-     * @param {{[key:string]: any}} entityBody 
-     * @param {string} id 
-     */
-    const updateEntity = (entityBody, id) => {
-        return fetch(`${collectionUrl}/${id}.json` + (token ? `?auth=${token}` : ''), {
-            method: 'PUT',
-            body: JSON.stringify(entityBody)
-        }).then(x => x.json());
-    };
-
-    /**
-     * Receive any javascript and updates entity in pre configured collection based on the provided Id
-     * @param {{[key:string]: any}} entityBody 
-     * @param {string} id 
-     */
-    const patchEntity = (entityBody, id) => {
-        return fetch(`${collectionUrl}/${id}.json` + (token ? `?auth=${token}` : ''), {
-            method: 'PATCH',
-            body: JSON.stringify(entityBody)
-        }).then(x => x.json());
-    };
-
-    /**
-     * Based on id deletes entity in pre configured collection
-     * @param {string} id 
-     */
-    const deleteEntity = (id) => {
-        return fetch(`${collectionUrl}/${id}.json` + (token ? `?auth=${token}` : ''), {
-            method: 'DELETE'
-        }).then(x => x.json());
-    };
-
-    return {
-        getAll,
-        getById,
-        createEntity,
-        updateEntity,
-        patchEntity,
-        deleteEntity
-    };
-};
+export const requester = {
+    getAllRecords,
+    getRecordById,
+    createRecord,
+    updateRecord,
+    deleteRecord,
+    partialUpdateRecord
+}

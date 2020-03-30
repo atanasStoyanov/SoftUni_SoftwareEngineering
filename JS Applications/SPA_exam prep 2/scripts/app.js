@@ -25,8 +25,6 @@ const app = Sammy('#root', function () {
 
     this.post('#/cause/create', controllers.cause.post.create);
 
-    // Тук се опитвам да едитна трека, но нямам id, което да използвам в темплейта ./views/cause/edit.hbs
-    //От къде да взема id и къде да го закача, така че да мога да го използвам тук? 
     this.post('#/cause/edit/:causeId', controllers.cause.put.edit);
 
 

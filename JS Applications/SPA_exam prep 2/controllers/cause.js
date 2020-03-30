@@ -40,11 +40,11 @@ export default {
         },
         edit(context) {
             extend(context).then(function () {
+                context.id = context.params.causeId;
                 this.partial('../views/cause/edit.hbs');
             });
 
             const { causeId } = context.params;
-            localStorage.setItem('trekId', causeId);
 
             models.cause.get(causeId).then(response => {
                 const formValues = response.data();
@@ -90,17 +90,24 @@ export default {
                 const trek = docModifier(response);
                 trek.likes += 1;
 
-                return models.cause.like(causeId, trek);
+                return models.cause.edit(causeId, trek);
             })
                 .then(response => {
                     context.redirect(`#/cause/details/${causeId}`);
-                })
+                });
         },
         edit(context) {
+            const { causeId } = context.params;
+            const trek = {
+                ...context.params,
+                uid: localStorage.getItem('userId')
+            }
 
-            //TODO... 
-            const {causeId} = context.params;
-            console.log(context.params);
+            models.cause.edit(causeId, trek)
+                .then(response => {
+                    context.redirect(`#/cause/details/${causeId}`);
+                })
+                .catch(e => console.error(e));
         }
     }
 }

@@ -57,7 +57,6 @@ export default {
     post: {
         create(context) {
 
-            console.log(context.params);
             const data = {
                 ...context.params,
                 uid: localStorage.getItem('userId'),

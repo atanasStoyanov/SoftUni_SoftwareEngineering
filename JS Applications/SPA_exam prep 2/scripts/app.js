@@ -1,3 +1,5 @@
+//Use Live Server to run this project.
+
 import controllers from '../controllers/index.js';
 
 const app = Sammy('#root', function () {

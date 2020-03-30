@@ -22,6 +22,7 @@ const app = Sammy('#root', function () {
     this.get('#/cause/close/:causeId', controllers.cause.del.close);
     this.get('#/cause/edit/:causeId', controllers.cause.get.edit);
     this.get('#/cause/like/:causeId', controllers.cause.put.like);
+    this.get('#/user/profile', controllers.user.get.profile);
 
     this.post('#/cause/create', controllers.cause.post.create);
 

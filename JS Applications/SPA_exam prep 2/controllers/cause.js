@@ -1,7 +1,7 @@
 import extend from '../utils/context.js';
 import models from '../models/index.js';
-import docModifier from '../utils/doc-modifier.js'
-import fillFormWithData from '../utils/formFiller.js'
+import docModifier from '../utils/doc-modifier.js';
+import fillFormWithData from '../utils/formFiller.js';
 
 export default {
     get: {

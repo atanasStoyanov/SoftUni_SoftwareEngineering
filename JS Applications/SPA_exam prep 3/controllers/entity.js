@@ -1,6 +1,7 @@
 import extend from '../utils/context.js';
 import models from '../models/index.js';
-import docModifier from '../utils/doc-modifier.js'
+import docModifier from '../utils/doc-modifier.js';
+import notifications from '../utils/notifications.js';
 
 export default {
     get: {
@@ -35,7 +36,7 @@ export default {
                 });
 
             })
-                .catch(e => console.error(e));
+                .catch(notifications.handleError);
         }
     },
     post: {
@@ -51,18 +52,20 @@ export default {
 
             models.entity.create(data)
                 .then(response => {
+                    notifications.showInfo('Idea created successfully.');
                     context.redirect('#/entity/dashboard');
                 })
-                .catch(e => console.error(e));
+                .catch(notifications.handleError);
         }
     },
     del: {
         close(context) {
             const { entityId } = context.params;
             models.entity.close(entityId).then(response => {
+                notifications.showInfo('Idea deleted successfully.');
                 context.redirect('#/entity/dashboard');
             })
-                .catch(e => console.error(e));
+                .catch(notifications.handleError);
         }
     },
     put: {
@@ -80,9 +83,10 @@ export default {
                 return models.entity.comment(entityId, idea);
             })
                 .then(response => {
+                    notifications.showInfo('Comment added.')
                     context.redirect(`#/entity/details/${entityId}`);
                 })
-                .catch(e => console.error(e));
+                .catch(notifications.handleError);
         },
         like(context) {
             const { entityId } = context.params;
@@ -96,7 +100,7 @@ export default {
                 .then(response => {
                     context.redirect(`#/entity/details/${entityId}`);
                 })
-                .catch(e => console.error(e));;
+                .catch(notifications.handleError);;
         }
     }
 }

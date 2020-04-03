@@ -1,6 +1,7 @@
 import models from '../models/index.js';
 import extend from '../utils/context.js';
 import docModifier from '../utils/doc-modifier.js';
+import notifications from '../utils/notifications.js';
 
 export default {
     get: {
@@ -16,6 +17,7 @@ export default {
         },
         logout(context) {
             models.user.logout().then(response => {
+                notifications.showInfo('Logout successfull!');
                 context.redirect('#/home');
             });
         },
@@ -41,9 +43,10 @@ export default {
             models.user.login(username, password)
                 .then(response => {
                     context.user = response;
+                    notifications.showInfo('Login successfull!');
                     context.redirect('#/home');
                 })
-                .catch(e => console.error(e));
+                .catch(notifications.handleError);
 
         },
         register(context) {
@@ -52,9 +55,12 @@ export default {
             if (password === repeatPassword) {
                 models.user.register(username, password)
                     .then(response => {
+                        notifications.showInfo('Registration successfull!');
                         context.redirect('#/home');
                     })
-                    .catch(e => console.error(e));
+                    .catch(notifications.handleError);
+            } else {
+                notifications.showError('Passwords do not match!');
             }
 
         }

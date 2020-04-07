@@ -1,0 +1,104 @@
+{{> header}}
+
+<!-- Register -->
+
+<div class="container auth">
+    <form action="#/user/register" method="POST">
+        <fieldset>
+            <legend>Register</legend>
+            <blockquote>Knowledge is not simply another commodity. On the contrary. Knowledge is never used up. It
+                increases by diffusion and grows by dispersion.</blockquote>
+            <p class="field email">
+                <input type="email" id="email" name="email" placeholder="maria@email.com">
+                <label for="email">Email:</label>
+            </p>
+            <p class="field password">
+                <input type="password" name="password" id="register-pass">
+                <label for="register-pass">Password:</label>
+            </p>
+            <p class="field password">
+                <input type="password" name="rePassword" id="rep-pass">
+                <label for="rep-pass">Repeat password:</label>
+            </p>
+            <p class="field submit">
+                <button class="btn submit" type="submit">Register</button>
+            </p>
+            <p class="field">
+                <span>If you already have profile click <a href="#/user/login">here</a></span>
+            </p>
+        </fieldset>
+    </form>
+</div>
+
+
+{{!-- <form action="#/user/register" method="post">
+
+    <div class="text-center mb-4">
+        <h1 class="h3 mb-3 font-weight-normal">Sign-Up</h1>
+        <p>Register yourself once and create/join awesome events!</p>
+    </div>
+
+    <div class="form-label-group">
+        <input type="text" id="inputUsername" name="username" class="form-control" placeholder="Username" required=""
+            autofocus="">
+        <label for="inputUsername">Username</label>
+    </div>
+
+    <div class="form-label-group">
+        <input type="text" id="photoURL" name="photoURL" class="form-control" placeholder="Profile picture">
+        <label for="photoURL">Profile Picture</label>
+    </div>
+
+    <div class="form-label-group">
+        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password"
+            required="">
+        <label for="inputPassword">Password</label>
+    </div>
+
+    <div class="form-label-group">
+        <input type="password" id="inputRePassword" name="rePassword" class="form-control" placeholder="Re-Password"
+            required="">
+        <label for="inputRePassword">Re-Password</label>
+    </div>
+
+    <button class="btn btn-lg btn-dark btn-block" type="submit">Sign Up</button>
+
+    <div class="text-center mb-4">
+        <p class="alreadyUser"> Already have account? Then just
+            <a href="#">Sign-In</a>!
+        </p>
+    </div>
+
+    <p class="mt-5 mb-3 text-muted text-center">© UniEnt - 2019.</p>
+
+</form> --}}
+
+
+{{!-- <form class="text-center p-5 form-layout" action="#/user/register" method="POST">
+
+    <p class="h4 mb-4">Sign up</p>
+
+    <div class="form-row mb-4">
+        <div class="col">
+
+            <input type="text" id="defaultRegisterFormFirstName" class="form-control" name="firstName"
+                placeholder="First name">
+        </div>
+        <div class="col">
+
+            <input type="text" id="defaultRegisterFormLastName" class="form-control" name="lastName"
+                placeholder="Last name">
+        </div>
+    </div>
+
+    <input type="text" id="defaultRegisterFormUsername" class="form-control mb-4" name="username"
+        placeholder="Username">
+    <input type="password" id="defaultRegisterFormPassword" class="form-control" name="password" placeholder="Password">
+    <hr>
+    <input type="password" id="defaultRegisterRepeatPassword" class="form-control" name="repeatPassword"
+        placeholder="Repeat Password">
+    <button class="btn btn-danger my-4 btn-block w-25 m-auto" type="submit">Sign up</button>
+
+</form> --}}
+
+{{> footer}}

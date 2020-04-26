@@ -1,0 +1,72 @@
+{{> header}}
+<!-- Dashboard (All Causes View) -->
+
+<h1 class="text-center">Our Games</h1>
+
+<div id="sharedRecipes">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="our-team-main">
+
+                    <div class="team-front">
+                        <img src="https://i.dailymail.co.uk/i/pix/2017/03/01/13/3DD64B2D00000578-4270932-Nokia_has_announced_a_new_version_of_the_cult_game_Snake_for_Fac-a-22_1488374824594.jpg" />
+                        <h3>Snake game</h3>
+                    </div>
+
+                    <div class="team-back">
+                        <div class="back-side-info">
+                            <h4>Description</h4>
+                            <p>Play the classic Snake game for free. Eat the food, but don't bite your own tail! How long can you survive?</p>
+                            <a href="#/games/snake" class="btn btn-primary btn-lg active" role="button">Play now</a>
+                        </div>
+
+                        <img class="foodImage" src="https://i0.wp.com/tilcode.blog/wp-content/uploads/2019/04/Screen-Shot-2019-04-28-at-17.51.16.png?resize=998%2C574&ssl=1" />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{!-- {{#each entities}}
+<div id="sharedRecipes">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="our-team-main">
+
+                    <div class="team-front">
+                        <img src="{{categoryImageUrl}}" />
+                        <h3>{{meal}}</h3>
+                        <p>{{category}}</p>
+                    </div>
+
+                    <div class="team-back">
+                        <div class="back-side-info">
+                            <h4>Ingredients</h4>
+                            <ul>
+                                {{#each ingredients}}
+                                <li>{{this}}</li>
+                                {{/each}}
+                            </ul>
+                            <a href="#/entity/details/{{id}}">View the recepie</a>
+                        </div>
+
+                        <img class="foodImage"
+                            src="{{foodImageURL}}" />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{else}}
+<div id='foodNotFound'>
+    <img src="https://t4.ftcdn.net/jpg/00/62/17/31/240_F_62173114_ozantkVtkPgzL0fxssAkTqKX1FHPr0UW.jpg" />
+    <h3>Food not found...</h3>
+</div>
+{{/each}} --}}
+
+{{> footer}}

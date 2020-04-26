@@ -1,0 +1,32 @@
+{{!-- <section id="notifications">
+        <div class="p-3 mb-2 bg-success w-50 text-white text-center" id="successNotification">Success</div>
+        <div class="p-3 mb-2 bg-danger w-50 text-white text-center" id="errorNotification">Error</div>
+        <div class="p-3 mb-2 bg-info w-50 text-white text-center" id="loadingNotification">Loading...</div>
+    </section> --}}
+
+<!-- Navigation -->
+
+<header class="masthead">
+    <div class="inner">
+        <h3 class="masthead-brand">Game Station</h3>
+        <nav class="nav nav-masthead justify-content-center">
+            {{#if isLoggedIn}}
+            <a class="nav-link" href="#/entity/dashboard">Home</a>
+            <a class="nav-link" href="#/entity/dashboard">Welcome, {{username}}!</a>
+            {{!-- <a class="nav-link" href="#/entity/create">Share recipe</a> --}}
+            <a class="nav-link" href="#/user/logout">Logout</a>
+            {{else}}
+            <a class="nav-link" href="#/home">Home</a>
+            <a class="nav-link" href="#/user/login">Login</a>
+            <a class="nav-link" href="#/user/register">Register</a>
+            {{/if}}
+
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<!-- ./Navigation -->

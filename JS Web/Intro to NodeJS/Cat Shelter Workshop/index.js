@@ -8,4 +8,6 @@ http.createServer((req, res) => {
             break;
         }
     }
+    console.log('Server listening on port 3000');
+    
 }).listen(port);

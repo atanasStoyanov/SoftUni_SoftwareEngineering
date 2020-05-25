@@ -9,11 +9,11 @@ module.exports = (req, res) => {
 
     if (pathname === '/' && req.method === 'GET') {
 
-        let filePath = path.normalize(
+        const filePath = path.normalize(
             path.join(__dirname, '../views/home/index.html')
         );
 
-        fs.readFile(filePath, (err, data) => {
+        fs.readFile(filePath, 'utf-8', (err, data) => {
             if (err) {
                 console.log(err);
                 res.writeHead(404, { 'Content-Type': 'text/plain' });

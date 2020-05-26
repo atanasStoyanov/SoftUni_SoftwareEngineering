@@ -13,6 +13,8 @@
   ],
   "author": "Atanas",
   "license": "ISC",
-  "devDependencies": {
+  "devDependencies": {},
+  "dependencies": {
+    "formidable": "^1.2.2"
   }
 }

@@ -2,7 +2,7 @@ const url = require('url');
 const fs = require('fs');
 const path = require('path');
 const cats = require('../data/cats.json');
-
+const errorHandler = require('../utils/errorHandler');
 
 module.exports = (req, res) => {
     const pathname = url.parse(req.url).pathname;
@@ -15,10 +15,7 @@ module.exports = (req, res) => {
 
         fs.readFile(filePath, 'utf-8', (err, data) => {
             if (err) {
-                console.log(err);
-                res.writeHead(404, { 'Content-Type': 'text/plain' });
-                res.write('Page Not Found');
-                res.end();
+                errorHandler(err, res);
                 return;
             }
 

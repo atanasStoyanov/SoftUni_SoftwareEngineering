@@ -5,6 +5,7 @@ const qs = require('querystring');
 const formidable = require('formidable');
 const breeds = require('../data/breeds');
 const cats = require('../data/cats');
+const errorHandler = require('../utils/errorHandler');
 
 module.exports = (req, res) => {
     const pathname = url.parse(req.url).pathname;
@@ -17,10 +18,7 @@ module.exports = (req, res) => {
 
         fs.readFile(filePath, 'utf-8', (err, data) => {
             if (err) {
-                console.log(err);
-                res.writeHead(404, { 'Content-Type': 'text/plain' });
-                res.write('Page Not Found');
-                res.end();
+                errorHandler(err, res);
                 return;
             }
 
@@ -38,9 +36,7 @@ module.exports = (req, res) => {
         form.parse(req, (err, fields, files) => {
 
             if (err) {
-                console.log(err);
-                res.writeHead(404, { 'Content-Type': 'text/plain' });
-                res.write('Page Not Found');
+                errorHandler(err, res);
                 return;
             }
 
@@ -51,9 +47,7 @@ module.exports = (req, res) => {
 
             fs.rename(oldPath, newPath, err => {
                 if (err) {
-                    console.log(err);
-                    res.writeHead(404, { 'Content-Type': 'text/plain' });
-                    res.write('Page Not Found');
+                    errorHandler(err, res);
                     return;
                 }
 
@@ -65,10 +59,7 @@ module.exports = (req, res) => {
 
             fs.readFile(filePath, 'utf-8', (err, data) => {
                 if (err) {
-                    console.log(err);
-                    res.writeHead(404, { 'Content-Type': 'text/plain' });
-                    res.write('Page Not Found');
-                    res.end();
+                    errorHandler(err, res);
                     return;
                 }
 
@@ -81,10 +72,7 @@ module.exports = (req, res) => {
 
                 fs.writeFile(filePath, JSON.stringify(allCats), err => {
                     if (err) {
-                        console.log(err);
-                        res.writeHead(404, { 'Content-Type': 'text/plain' });
-                        res.write('Page Not Found');
-                        res.end();
+                        errorHandler(err, res);
                         return;
                     }
 
@@ -103,10 +91,7 @@ module.exports = (req, res) => {
 
         fs.readFile(filePath, 'utf-8', (err, data) => {
             if (err) {
-                console.log(err);
-                res.writeHead(404, { 'Content-Type': 'text/plain' });
-                res.write('Page Not Found');
-                res.end();
+                errorHandler(err, res);
                 return;
             }
 
@@ -130,9 +115,7 @@ module.exports = (req, res) => {
 
             fs.readFile(filePath, (err, data) => {
                 if (err) {
-                    console.log(err);
-                    res.writeHead(404, { 'Content-Type': 'text/plain' });
-                    res.write('Page Not Found');
+                    errorHandler(err, res);
                     return;
                 }
 
@@ -141,7 +124,7 @@ module.exports = (req, res) => {
 
                 fs.writeFile(filePath, JSON.stringify(breeds), err => {
                     if (err) {
-                        console.log(err);
+                        errorHandler(err, res);
                         return;
                     }
                     console.log('The breed was successfully added');
@@ -154,5 +137,4 @@ module.exports = (req, res) => {
     } else {
         return true;
     }
-
 }

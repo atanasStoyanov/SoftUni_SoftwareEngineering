@@ -31,7 +31,7 @@ module.exports = (req, res) => {
         });
 
     } else if (pathname === '/cats/addCat' && req.method === 'POST') {
-        let form = new formidable.IncomingForm();
+        const form = new formidable.IncomingForm();
 
         form.parse(req, (err, fields, files) => {
 
@@ -57,7 +57,7 @@ module.exports = (req, res) => {
             const filePath = path.normalize(
                 path.join(__dirname, '../data/cats.json'));
 
-            fs.readFile(filePath, 'utf-8', (err, data) => {
+            fs.readFile(filePath, 'utf8', (err, data) => {
                 if (err) {
                     errorHandler(err, res);
                     return;
@@ -70,14 +70,7 @@ module.exports = (req, res) => {
                     image: files.upload.name
                 });
 
-                fs.writeFile(filePath, JSON.stringify(allCats), err => {
-                    if (err) {
-                        errorHandler(err, res);
-                        return;
-                    }
-
-                    console.log('Cat added successfully');
-                });
+                fs.writeFileSync(filePath, JSON.stringify(allCats));
 
                 res.writeHead(301, { 'Location': '/' });
                 return res.end();
@@ -122,13 +115,7 @@ module.exports = (req, res) => {
                 let breeds = JSON.parse(data);
                 breeds.push(body.breed);
 
-                fs.writeFile(filePath, JSON.stringify(breeds), err => {
-                    if (err) {
-                        errorHandler(err, res);
-                        return;
-                    }
-                    console.log('The breed was successfully added');
-                });
+                fs.writeFileSync(filePath, JSON.stringify(breeds));
 
                 res.writeHead(301, { 'Location': '/' });
                 return res.end();

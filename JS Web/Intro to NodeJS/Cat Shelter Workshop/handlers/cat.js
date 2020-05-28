@@ -4,7 +4,6 @@ const path = require('path');
 const qs = require('querystring');
 const formidable = require('formidable');
 const breeds = require('../data/breeds');
-const cats = require('../data/cats');
 const errorHandler = require('../utils/errorHandler');
 
 module.exports = (req, res) => {
@@ -57,7 +56,7 @@ module.exports = (req, res) => {
             const filePath = path.normalize(
                 path.join(__dirname, '../data/cats.json'));
 
-            fs.readFile(filePath, 'utf8', (err, data) => {
+            fs.readFile(filePath, 'utf-8', (err, data) => {
                 if (err) {
                     errorHandler(err, res);
                     return;
@@ -101,6 +100,10 @@ module.exports = (req, res) => {
 
         req.on('data', data => {
             formData += data;
+
+            if (formData.length > 1e6) {
+                req.connection.destroy();
+            }
         });
 
         req.on('end', () => {

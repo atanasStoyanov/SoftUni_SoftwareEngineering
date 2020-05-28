@@ -26,11 +26,14 @@ module.exports = (req, res) => {
             res.writeHead(200, { 'Content-Type': 'text/html' });
 
             const breedOptions = breeds.map(breed => `<option value="${breed}">${breed}</option>`);
+            
+            const currentCat = cats.find(cat => cat.id === id);
+
             const modifiedData = data.toString()
                 .replace('{{catBreeds}}', breedOptions)
-                .replace('{{catName}}', cats[id - 1].name)
-                .replace('{{description}}', cats[id - 1].description)
-                .replace('{{catImage}}', cats[id - 1].image)
+                .replace('{{catName}}', currentCat.name)
+                .replace('{{description}}', currentCat.description)
+                .replace('{{catImage}}', currentCat.image)
                 .replace('{{catId}}', id);
 
             res.write(modifiedData)

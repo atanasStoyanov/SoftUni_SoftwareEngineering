@@ -64,8 +64,11 @@ module.exports = (req, res) => {
                 }
 
                 let allCats = JSON.parse(data);
+
+                const id = allCats.length > 0 ? Number(allCats[allCats.length - 1].id) + 1 : 1; // the id of the last cat + 1 or 1 if no cats in db;
+
                 allCats.push({
-                    id: allCats.length + 1,
+                    id,
                     ...fields,
                     image: files.upload.name
                 });
